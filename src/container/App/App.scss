@@ -1,0 +1,14 @@
+@import '../../common/fonts/fonts.scss';
+body {
+    background: #F6F3F3;
+    .app {
+        font-family: 'Merriweather';
+        a {
+            text-decoration: none;
+            color: #343030;
+        }
+        p {
+            color: #343030;
+        }
+    }
+}

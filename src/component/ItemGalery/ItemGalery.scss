@@ -1,0 +1,17 @@
+ul {
+    display: flex;
+    justify-content: space-between;
+    .itemGalery {
+        width: 280px;
+        border: 1px solid #E1E1E1;
+        .namePicture {
+            margin: 20px auto 22px 24px;
+            width: 220px;
+        }
+        &.notActive {
+            .active {
+                width: 0px;
+            }
+        }
+    }
+}

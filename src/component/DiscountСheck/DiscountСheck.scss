@@ -1,0 +1,42 @@
+.price {
+    margin: 0px 24px 24px 24px;
+    display: flex;
+    justify-content: space-between;
+    .price-front {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .oldPrice {
+            color: #A0A0A0;
+            text-decoration: line-through;
+            font-size: 14px;
+            line-height: 21px;
+            font-weight: 300;
+        }
+        .nowPrice {
+            color: #343030;
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: bold;
+        }
+    }
+    button {
+        width: 118px;
+        height: 48px;
+        padding: 0px;
+        border: 0px;
+        color: #F4F6F9;
+        font-family: 'Merriweather';
+        &.active {
+            background: #382E2B;
+            align-items: center;
+            justify-content: center;
+        }
+        &.notActive {
+            display: flex;
+            background: #5B3A32;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

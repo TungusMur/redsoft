@@ -1,0 +1,15 @@
+.menu {
+  display: flex;
+  width: 519px;
+  margin-right: 120px;
+  ul {
+    display: flex;
+    width: inherit;
+    justify-content: space-between;
+    li {
+      a {
+        font-size: 14px;
+      }
+    }
+  }
+}
