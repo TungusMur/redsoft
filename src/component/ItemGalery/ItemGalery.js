@@ -2,13 +2,12 @@ import { useState, useEffect } from 'react';
 import DiscountСheck from '../DiscountСheck';
 import './ItemGalery.scss';
 
-const ItemsGalery = ({ galery }) => {
+const ItemsGalery = ({ galery, loading, statusLoading }) => {
   const [bag, setBag] = useState(
     JSON.parse(localStorage.getItem('bag')) ? JSON.parse(localStorage.getItem('bag')) : {}
   );
   useEffect(() => {
     localStorage.setItem('bag', JSON.stringify({ ...bag }));
-    console.log('cool');
   }, [bag]);
   return (
     <ul>
@@ -23,6 +22,8 @@ const ItemsGalery = ({ galery }) => {
             status={item.status}
             bag={bag}
             setBag={(e) => setBag(e)}
+            loading={(e) => loading(e)}
+            statusLoading={statusLoading}
           />
         </li>
       ))}

@@ -1,6 +1,8 @@
+/* eslint-disable no-nested-ternary */
 import { useEffect } from 'react';
 
-const ButtonCheck = ({ bag, setBag, namePicture }) => {
+// eslint-disable-next-line no-unused-vars
+const ButtonCheck = ({ bag, setBag, namePicture, loading, statusLoading }) => {
   useEffect(() => {
     if (namePicture && !bag[namePicture]) {
       setBag({ ...bag, [namePicture]: 'active' });
@@ -11,13 +13,19 @@ const ButtonCheck = ({ bag, setBag, namePicture }) => {
     <button
       onClick={() => {
         setBag({ ...bag, [namePicture]: 'notActive' });
-        console.log(bag);
-        // localStorage.setItem('bag', JSON.stringify({ ...bag }));
+        loading(namePicture);
       }}
       className={bag[namePicture]}
     >
-      {bag[namePicture] === 'active' ? null : <img alt="check" src="../img/check.svg" />}
-      {bag[namePicture] === 'active' ? 'Купить' : 'В корзине'}
+      {statusLoading.loading && statusLoading.namePicture === namePicture ? null : bag[namePicture] ===
+        'active' ? null : (
+        <img alt="check" src="../img/check.svg" />
+      )}
+      {statusLoading.loading && statusLoading.namePicture === namePicture
+        ? '...загрузка'
+        : bag[namePicture] === 'active'
+        ? 'Купить'
+        : 'В корзине'}
     </button>
   );
 };

@@ -6,13 +6,13 @@ import { getLoading } from '../../Store/reducers/reducerLoading';
 import ItemsGalery from '../../component/ItemGalery';
 import './Home.scss';
 
-const Home = ({ galery, getData }) => {
+const Home = ({ galery, getData, loading }) => {
   useEffect(() => {
     getData();
   }, [getData]);
   return (
     <div className="home">
-      <ItemsGalery galery={galery.galery} />
+      <ItemsGalery galery={galery.galery} loading={(e) => loading(e)} statusLoading={galery.loading} />
     </div>
   );
 };
