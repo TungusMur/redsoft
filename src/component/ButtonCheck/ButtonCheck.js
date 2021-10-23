@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 
 // eslint-disable-next-line no-unused-vars
-const ButtonCheck = ({ bag, setBag, namePicture, loading, statusLoading }) => {
+const ButtonCheck = ({ id, bag, setBag, namePicture, statusLoading, loading }) => {
   useEffect(() => {
     if (namePicture && !bag[namePicture]) {
       setBag({ ...bag, [namePicture]: 'active' });
@@ -13,19 +13,12 @@ const ButtonCheck = ({ bag, setBag, namePicture, loading, statusLoading }) => {
     <button
       onClick={() => {
         setBag({ ...bag, [namePicture]: 'notActive' });
-        loading(namePicture);
+        loading(id);
       }}
       className={bag[namePicture]}
     >
-      {statusLoading.loading && statusLoading.namePicture === namePicture ? null : bag[namePicture] ===
-        'active' ? null : (
-        <img alt="check" src="../img/check.svg" />
-      )}
-      {statusLoading.loading && statusLoading.namePicture === namePicture
-        ? '...загрузка'
-        : bag[namePicture] === 'active'
-        ? 'Купить'
-        : 'В корзине'}
+      {statusLoading ? null : bag[namePicture] === 'active' ? null : <img alt="check" src="../img/check.svg" />}
+      {statusLoading ? '...загрузка' : bag[namePicture] === 'active' ? 'Купить' : 'В корзине'}
     </button>
   );
 };

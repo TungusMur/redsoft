@@ -2,7 +2,7 @@
 import ButtonCheck from '../ButtonCheck';
 import './DiscountСheck.scss';
 
-const DiscountСheck = ({ namePicture, price, discount, status, bag, setBag, loading, statusLoading }) =>
+const DiscountСheck = ({ id, namePicture, price, discount, status, bag, setBag, statusLoading, loading }) =>
   status === 'active' ? (
     discount > 0 ? (
       <div className="price">
@@ -11,11 +11,12 @@ const DiscountСheck = ({ namePicture, price, discount, status, bag, setBag, loa
           <p className="nowPrice">{`${price - discount}$`}</p>
         </div>
         <ButtonCheck
+          id={id}
           bag={bag}
           setBag={(e) => setBag(e)}
           namePicture={namePicture}
-          loading={loading}
           statusLoading={statusLoading}
+          loading={(e) => loading(e)}
         />
       </div>
     ) : (
@@ -25,11 +26,12 @@ const DiscountСheck = ({ namePicture, price, discount, status, bag, setBag, loa
           <p className="nowPrice">{`${price}$`}</p>
         </div>
         <ButtonCheck
+          id={id}
           bag={bag}
           setBag={(e) => setBag(e)}
           namePicture={namePicture}
-          loading={(e) => loading(e)}
           statusLoading={statusLoading}
+          loading={(e) => loading(e)}
         />
       </div>
     )
@@ -40,11 +42,12 @@ const DiscountСheck = ({ namePicture, price, discount, status, bag, setBag, loa
         <p className="nowPrice">Продана на аукционе</p>
       </div>
       <ButtonCheck
+        id={id}
         bag={bag}
         setBag={(e) => setBag(e)}
         namePicture={namePicture}
-        loading={loading}
         statusLoading={statusLoading}
+        loading={(e) => loading(e)}
       />
     </div>
   );

@@ -1,23 +1,24 @@
-/* eslint-disable object-shorthand */
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getGalery } from '../../Store/reducers/reducerGarely';
-import { getLoading } from '../../Store/reducers/reducerLoading';
+import { getGalery, addLoading } from '../../Store/reducers/reducerGarely';
 import ItemsGalery from '../../component/ItemGalery';
 import './Home.scss';
 
-const Home = ({ galery, getData, loading }) => {
+const Home = ({ data, getData, loading }) => {
   useEffect(() => {
     getData();
   }, [getData]);
+  console.log(data);
   return (
     <div className="home">
-      <ItemsGalery galery={galery.galery} loading={(e) => loading(e)} statusLoading={galery.loading} />
+      <ItemsGalery galery={data.galery} loading={(e) => loading(e)} />
     </div>
   );
 };
 
-export default connect((galery, loading) => ({ galery: galery, loading: loading }), {
+export default connect((galery) => ({ data: galery.galery }), {
   getData: getGalery,
-  loading: getLoading,
+  loading: addLoading,
 })(Home);
+
+// loading={(e) => loading(e)}
